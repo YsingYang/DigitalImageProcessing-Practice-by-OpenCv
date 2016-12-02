@@ -18,12 +18,12 @@ int main(){
     }
 
     Mat gray_image;
-     cvtColor(image, gray_image, CV_BGR2GRAY );
+     cvtColor(image, gray_image, CV_BGR2GRAY );//converting color to gray
 
-    //namedWindow("Display_color",CV_WINDOW_AUTOSIZE);
+    namedWindow("Display_color",CV_WINDOW_AUTOSIZE);
     namedWindow("Display_gray",CV_WINDOW_AUTOSIZE);
 
-    //imshow("Display_color",image);
+    imshow("Display_color",image);
     imshow("Display_gray",gray_image);
 
     waitKey(0);
