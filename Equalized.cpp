@@ -37,10 +37,10 @@ int main( int argc, char** argv )
   equalizeHist( src, dst );
 
   /// 显示结果
-  namedWindow( source_window, CV_WINDOW_AUTOSIZE );
-  namedWindow( equalized_window, CV_WINDOW_AUTOSIZE );
+  namedWindow( source_window, CV_WINDOW_AUTOSIZE );//original image, create windows to show image
+  namedWindow( equalized_window, CV_WINDOW_AUTOSIZE );//equalized_image
 
-  imshow( source_window, src );
+  imshow( source_window, src );//imshow(windows,matrix_image)
   imshow( equalized_window, dst );
 
   /// 等待用户按键退出程序

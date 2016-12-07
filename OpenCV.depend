@@ -1,0 +1,155 @@
+# depslib dependency file v1.0
+1477832763 source:/home/ysing/codeblock Projects/OpenCV/CVtest.cpp
+	<cv.h>
+	<highgui.h>
+
+1461162079 /home/ysing/software/opencv-2.4.13/include/opencv/cv.h
+	"opencv2/core/core_c.h"
+	"opencv2/core/core.hpp"
+	"opencv2/imgproc/imgproc_c.h"
+	"opencv2/imgproc/imgproc.hpp"
+	"opencv2/video/tracking.hpp"
+	"opencv2/features2d/features2d.hpp"
+	"opencv2/flann/flann.hpp"
+	"opencv2/calib3d/calib3d.hpp"
+	"opencv2/objdetect/objdetect.hpp"
+	"opencv2/legacy/compat.hpp"
+	"opencv2/core/internal.hpp"
+
+1461162079 /home/ysing/software/opencv-2.4.13/include/opencv/highgui.h
+	"opencv2/core/core_c.h"
+	"opencv2/core/core.hpp"
+	"opencv2/highgui/highgui_c.h"
+	"opencv2/highgui/highgui.hpp"
+
+1480426887 source:/home/ysing/codeblock Projects/OpenCV/Equalized.cpp
+	<stdio.h>
+	<iostream>
+	<opencv.hpp>
+	<opencv/cv.h>
+	"opencv2/highgui/highgui.hpp"
+	"opencv2/imgproc/imgproc.hpp"
+	<iostream>
+	<stdio.h>
+
+1461162079 /home/ysing/software/opencv-2.4.13/include/opencv2/opencv.hpp
+	"opencv2/opencv_modules.hpp"
+	"opencv2/core/core_c.h"
+	"opencv2/core/core.hpp"
+	"opencv2/flann/miniflann.hpp"
+	"opencv2/imgproc/imgproc_c.h"
+	"opencv2/imgproc/imgproc.hpp"
+	"opencv2/photo/photo.hpp"
+	"opencv2/video/video.hpp"
+	"opencv2/features2d/features2d.hpp"
+	"opencv2/objdetect/objdetect.hpp"
+	"opencv2/calib3d/calib3d.hpp"
+	"opencv2/ml/ml.hpp"
+	"opencv2/highgui/highgui_c.h"
+	"opencv2/highgui/highgui.hpp"
+	"opencv2/contrib/contrib.hpp"
+
+1480429467 source:/home/ysing/codeblock Projects/OpenCV/Caul_Hist.cpp
+	"opencv2/highgui/highgui.hpp"
+	"opencv2/imgproc/imgproc.hpp"
+	<iostream>
+	<stdio.h>
+
+1480599146 source:/home/ysing/codeblock Projects/OpenCV/LearningCV_1.cpp
+	<stdio.h>
+	<iostream>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/core.hpp>
+
+1480602343 source:/home/ysing/codeblock Projects/OpenCV/LearningCV_1_1.cpp
+	<stdio.h>
+	<iostream>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<opencv2/imgproc.hpp>
+
+1480602353 source:/home/ysing/codeblock Projects/OpenCV/LearningCV_reading_pixel.cpp
+	<stdio.h>
+	<iostream>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+
+1480602918 source:/home/ysing/codeblock Projects/OpenCV/CV_read_pixel_2.cpp
+	<stdio.h>
+	<iostream>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+
+1480603047 source:/home/ysing/codeblock Projects/OpenCV/CV_read_pixel_3.cpp
+	<stdio.h>
+	<iostream>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+
+1480688529 source:/home/ysing/codeblock Projects/OpenCV/CV_draw_line.cpp
+	<stdio.h>
+	<iostream>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+
+1480689365 source:/home/ysing/codeblock Projects/OpenCV/CV_draw_linetoSquare.cpp
+	<stdio.h>
+	<iostream>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+
+1480771165 source:/home/ysing/codeblock Projects/OpenCV/CV_draw_square_2.cpp
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<iostream>
+
+1480771642 source:/home/ysing/codeblock Projects/OpenCV/CV_Sqare_Code/CV_draw_square_2.cpp
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<iostream>
+
+1480773266 source:/home/ysing/codeblock Projects/OpenCV/CV_draw_wave.cpp
+	<stdio.h>
+	<opencv2/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<iostream>
+
+1480774271 source:/home/ysing/codeblock Projects/OpenCV/CV_Equalized.cpp
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+
+1480862021 source:/home/ysing/codeblock Projects/OpenCV/Histcal.cpp
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+
+1481119891 source:/home/ysing/codeblock Projects/OpenCV/My_histgram_cal.cpp
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+
+1481034150 source:/home/ysing/codeblock Projects/OpenCV/CV_Draw_spiral.cpp
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+
+1481034501 source:/home/ysing/codeblock Projects/OpenCV/CV_Split_imge.cpp
+	<stdio.h>
+	<iostream>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+
+1481121577 source:/home/ysing/codeblock Projects/OpenCV/EqualizeHist/My_histgram_cal.cpp
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+
