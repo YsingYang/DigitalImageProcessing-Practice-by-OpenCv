@@ -153,3 +153,10 @@
 	<opencv2/highgui/highgui.hpp>
 	<opencv2/imgproc/imgproc.hpp>
 
+1481207960 source:/home/ysing/codeblock Projects/OpenCV/CV_filter/Space_filter.cpp
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+

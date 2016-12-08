@@ -10,10 +10,14 @@ using namespace cv;
 
 
 int main(){
-    Mat image,dst;
+    Mat image,dst,dst2,dst3;
     image = imread("/home/ysing/codeblock Projects/OpenCV/EqualizeHist/82.png",0);//0为灰度图，及时是灰度图也要这么用
     imshow("image",image);
     equalizeHist(image,dst);
+    equalizeHist(dst,dst2);
+    equalizeHist(dst2,dst3);
+    imshow("dst2",dst2);
+    imshow("dst3",dst3);
     imshow("dst",dst);
     vector<float> histgram(256,0);
     vector<float> Ehistgram(256,0);
@@ -41,6 +45,7 @@ int main(){
     imshow("histgraph",histgraph);
     imshow("Ehistgraph",Ehistgraph);
     imwrite("/home/ysing/codeblock Projects/OpenCV/EqualizeHist/original_Hist.jpg",histgraph);
+    imwrite("/home/ysing/codeblock Projects/OpenCV/EqualizeHist/Equalized_imge.jpg",dst);
     imwrite("/home/ysing/codeblock Projects/OpenCV/EqualizeHist/Equalized_Hist.jpg",Ehistgraph);
     waitKey(0);
     return 1;
