@@ -153,7 +153,7 @@
 	<opencv2/highgui/highgui.hpp>
 	<opencv2/imgproc/imgproc.hpp>
 
-1481371543 source:/home/ysing/codeblock Projects/OpenCV/CV_filter/Space_filter.cpp
+1481372591 source:/home/ysing/codeblock Projects/OpenCV/CV_filter/Space_filter.cpp
 	<iostream>
 	<stdio.h>
 	<opencv2/core/core.hpp>
@@ -174,4 +174,20 @@
 	<opencv2/core/core.hpp>
 	<opencv2/highgui/highgui.hpp>
 	<opencv2/imgproc/imgproc.hpp>
+
+1481373173 source:/home/ysing/codeblock Projects/OpenCV/CV_filter/Median_Filter.cpp
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	"CV_helper/Histogram.h"
+
+1481374094 source:/home/ysing/codeblock Projects/OpenCV/Laplacian_Filter.cpp
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	"CV_helper/Histogram.h"
 

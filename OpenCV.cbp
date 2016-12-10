@@ -20,6 +20,7 @@
 					<Add directory="/home/ysing/software/opencv-2.4.13/include" />
 					<Add directory="/home/ysing/software/opencv-2.4.13/include/opencv" />
 					<Add directory="/home/ysing/software/opencv-2.4.13/include/opencv2" />
+					<Add directory="../OpenCV" />
 				</Compiler>
 				<Linker>
 					<Add library="/home/ysing/software/opencv-2.4.13/release/lib/libopencv_videostab_pch_dephelp.a" />
@@ -114,7 +115,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="CV_filter/CV_Image_Sharpening.cpp" />
+		<Unit filename="CV_helper/Histogram.h" />
+		<Unit filename="Laplacian_Filter.cpp" />
 		<Unit filename="Untitled1" />
 		<Extensions>
 			<code_completion />
