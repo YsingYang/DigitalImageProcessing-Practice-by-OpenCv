@@ -22,20 +22,26 @@ int main(){
      cout<<"  "<<src1.cols<<"  "<<src2.cols<<endl;
     cout<<"Enter the mask Size";
     cin>>msize;//msize<rsize
-    for(int i=0;i<src1.rows-msize;++i){
-        for(int j=0;j<src1.cols-msize;++j){
-            int  intensity2 =0;
-            for(int p=0;p<msize;++p){
-                for(int q=0;q<msize;++q){
-                    intensity2 += src1.at<uchar>(i+p,j+q);
+    //边缘处理
+    for(int i=0;i<src1.rows;++i){
+        for(int j=0;j<src2.cols;++j){
+            int rstart = i-((msize-1)>>1),rends = i+((msize-1)>>1);
+            int cstart = j-((msize-1)>>1),cends = j+((msize-1)>>1);
+            int  intensity=0;
+            int count=0;
+            for(int p = rstart;p<=rends;++p){
+                for(int q= cstart;q<=cends;++q){
+                    int nowp = (p<0?src1.rows+p:(p>=src1.rows?p-src1.rows:p) );
+                    int nowq = (q<0?src1.cols+q: (q>=src1.cols?q-src1.cols:q));
+                    intensity += src1.at<uchar>(nowp,nowq);
                 }
             }
-            src2.at<uchar>(i+msize/2,j+msize/2) = (uchar)(intensity2/pow(msize,2));
+            //cout<<intensity/9<<"  "<<(int)src1.at<uchar>(i,j)<<endl;
+            src2.at<uchar>(i,j) = (uchar)(intensity/(msize*msize));
         }
     }
     histgram1 = cal_histogram(src1,max1);
     histgram2 = cal_histogram(src2,max2);
-    cout<<max1<<"  "<<max2<<endl;
     Mat histgraph1 = out_Histogram(histgram1,max1);
     Mat histgraph2 = out_Histogram(histgram2,max2);
     imshow("original_hist",histgraph1);
