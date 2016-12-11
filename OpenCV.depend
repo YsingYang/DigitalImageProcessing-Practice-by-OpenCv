@@ -191,3 +191,9 @@
 	<opencv2/imgproc/imgproc.hpp>
 	"CV_helper/Histogram.h"
 
+1481446885 source:/home/ysing/codeblock Projects/OpenCV/CV_Scale/Up_sample.cpp
+	<stdio.h>
+	<iostream>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+
