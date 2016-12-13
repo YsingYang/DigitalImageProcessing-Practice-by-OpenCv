@@ -146,7 +146,7 @@
 	<opencv2/core/core.hpp>
 	<opencv2/highgui/highgui.hpp>
 
-1481121577 source:/home/ysing/codeblock Projects/OpenCV/EqualizeHist/My_histgram_cal.cpp
+1481201744 source:/home/ysing/codeblock Projects/OpenCV/EqualizeHist/My_histgram_cal.cpp
 	<iostream>
 	<stdio.h>
 	<opencv2/core/core.hpp>
@@ -199,10 +199,18 @@
 	<opencv2/highgui/highgui.hpp>
 	<math.h>
 
-1481462138 source:/home/ysing/codeblock Projects/OpenCV/CV_Quanzation/CV_Quantization.cpp
+1481626872 source:/home/ysing/codeblock Projects/OpenCV/CV_Quanzation/CV_Quantization.cpp
 	<stdio.h>
 	<iostream>
 	<opencv2/core/core.hpp>
 	<opencv2/highgui.hpp>
 	<opencv2/imgproc/imgproc.hpp>
+
+1481633304 source:/home/ysing/codeblock Projects/OpenCV/CV_Scale/Scale_bi_LInear.cpp
+	<stdio.h>
+	<iostream>
+	<opencv2/core/core.hpp>
+	<opencv2/opencv.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<math.h>
 

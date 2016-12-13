@@ -16,7 +16,7 @@ int main(){
     cin>>drow>>dcol;
     cout<<drow<<dcol;
     Mat dst;//create dst image;
-    cv::resize(img,dst,Size(drow, dcol),CV_INTER_AREA);
+    cv::resize(img,dst,Size(drow, dcol),CV_INTER_LINEAR);
     imshow("img",img);
     imshow("dst",dst);
     //imwrite("CV_Scale/Down-367-298.jpg",dst);

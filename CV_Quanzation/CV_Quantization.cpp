@@ -13,13 +13,15 @@ int main(){
     int level;
     cin>>level;
     Mat dst = Mat::zeros(img.rows,img.cols,0);
+    double ra = 255.0/((1<<level)-1);
+    img.at<uchar>(150,155)=255;
     imshow("img",img);
     for(int i=0;i<img.rows;++i){
         for(int j=0;j<img.cols;++j){
-            int intensity = img.at<uchar>(i,j);
-            intensity = (intensity>>level)<<level;
+            int  intensity = img.at<uchar>(i,j);
+            intensity /= (1<<(8-level));
+            intensity *= ra;
             dst.at<uchar>(i,j) = intensity;
-            cout<<intensity<<"  ";
         }
     }
     imshow("dst",dst);
