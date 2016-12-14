@@ -115,8 +115,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="CV_filter/CV_Image_Sharpening.cpp" />
 		<Unit filename="CV_helper/Histogram.h" />
-		<Unit filename="Laplacian_Filter.cpp" />
 		<Unit filename="Untitled1" />
 		<Extensions>
 			<code_completion />

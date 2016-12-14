@@ -16,7 +16,6 @@ int main(){
     int max1=0,max2=0;
     src1 = imread("/home/ysing/codeblock Projects/OpenCV/CV_filter/82.png",0);
     Mat src2 = Mat::zeros(src1.rows,src1.cols,CV_8U);
-    //Mat src2 = src1.clone();
      cout<<src1.rows<<"  "<<src2.rows;
      cout<<"  "<<src1.cols<<"  "<<src2.cols<<endl;
     cout<<"Enter the mask Size";
@@ -35,7 +34,7 @@ int main(){
             }
             int diff = abs(intensity1-intensity2);
             cout<<diff<<endl;
-            if(diff>255)
+           if(diff>255)
                 diff=255;
             src2.at<uchar>(i+msize/2,j+msize/2) =(uchar)diff;
         }
@@ -59,6 +58,9 @@ int main(){
         line(histgraph1,Point(i,255-histgram1[i]),Point(i,255),128);
         line(histgraph2,Point(i,255-histgram2[i]),Point(i,255),128);
     }
+    Mat  dst2;
+    Laplacian(src1,dst2,8,3);
+    imshow("dst2",dst2);
     imshow("original_hist",histgraph1);
     imshow("filter_hist",histgraph2);
     imshow("original",src1);

@@ -28,3 +28,29 @@ Mat out_Histogram(vector<int> Pixelvector,const int maxPixel){
     }
     return img;
 }
+
+
+Mat Equalized(const Mat &img,vector<int> Pixelvector){
+    vector<double> Pdf_Vector(256,0);
+    vector<uchar> CDF_Vector(256,0);
+    int count_Pixel = img.rows * img.cols;
+    double last_cdf= 0.0;
+    for(int i=0;i<256;++i){
+        Pdf_Vector[i] = Pixelvector[i]*1.0/count_Pixel;
+        double temp = Pdf_Vector[i] *255.0 + last_cdf;
+         CDF_Vector[i] = (uchar)(temp - floor(temp)>=0.5? ceil(temp):floor(temp));
+        last_cdf = temp;
+    }//count
+    /*for(int i=0;i<256;++i){
+        double temp = Pdf_Vector[i] *255 + last_cdf;
+        CDF_Vector[i] = (uchar)(temp - floor(temp)>=0.5? ceil(temp):floor(temp));
+        last_cdf = temp;
+    }*/
+    Mat dst = Mat::zeros(img.rows,img.cols,CV_8UC1);
+    for(int i=0;i<dst.rows;++i){
+        for(int j=0;j<dst.cols;++j){
+            dst.at<uchar>(i,j) = CDF_Vector[img.at<uchar>(i,j)];
+        }
+    }
+    return dst;
+}
