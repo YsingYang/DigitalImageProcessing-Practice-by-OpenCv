@@ -215,16 +215,47 @@
 	<opencv2/highgui/highgui.hpp>
 	<math.h>
 
-1481799464 source:/home/ysing/codeblock Projects/OpenCV/CV_DFT/Cv_dft.cpp
+1482154944 source:/home/ysing/codeblock Projects/OpenCV/CV_DFT/Cv_dft.cpp
 	<stdio.h>
 	<iostream>
 	<opencv2/core/core.hpp>
 	<opencv2/highgui/highgui.hpp>
 	<math.h>
+	"CV_helper/Histogram.h"
 
-1481807153 source:/home/ysing/codeblock Projects/OpenCV/CV_DFT/CV_Official_DFP.cpp
+1482156124 source:/home/ysing/codeblock Projects/OpenCV/CV_DFT/CV_Official_DFP.cpp
 	"opencv2/core/core.hpp"
 	"opencv2/imgproc/imgproc.hpp"
 	"opencv2/highgui/highgui.hpp"
 	<iostream>
+
+1482060733 source:/home/ysing/codeblock Projects/OpenCV/Testcomplex.cpp
+	<iostream>
+	<stdio.h>
+	<math.h>
+	<complex.h>
+
+1482062818 source:/home/ysing/codeblock Projects/OpenCV/Testuchar.cpp
+	<stdio.h>
+	<math.h>
+	<iostream>
+
+1482118913 source:/home/ysing/codeblock Projects/OpenCV/CV_DFT/CV_DFT_using_dft.cpp
+	<stdio.h>
+	<iostream>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+
+1482158583 source:/home/ysing/codeblock Projects/OpenCV/bit_count.cpp
+	<stdio.h>
+	<iostream>
+	"CV_helper/DFT_helper.h"
+
+1482158603 /home/ysing/codeblock Projects/OpenCV/CV_helper/DFT_helper.h
+	<stdio.h>
+	<iostream>
+	<vector>
+	<complex.h>
+	<bitset>
 

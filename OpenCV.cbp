@@ -115,9 +115,11 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="CV_DFT/Cv_dft.cpp" />
+		<Unit filename="CV_DFT/CV_DFT_using_dft" />
+		<Unit filename="CV_helper/DFT_helper.h" />
 		<Unit filename="CV_helper/Histogram.h" />
 		<Unit filename="Untitled1" />
+		<Unit filename="bit_count.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

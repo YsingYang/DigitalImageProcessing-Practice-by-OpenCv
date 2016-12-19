@@ -8,7 +8,7 @@ using namespace std;
 int main(int argc, char ** argv)
 {
 
-    Mat I = imread("CV_DFT/82.png", CV_LOAD_IMAGE_GRAYSCALE);
+    Mat I = imread("CV_DFT/82.jpg", CV_LOAD_IMAGE_GRAYSCALE);
     if( I.empty())
         return -1;
 
@@ -21,16 +21,18 @@ int main(int argc, char ** argv)
     Mat complexI;
     merge(planes, 2, complexI);         // Add to the expanded another plane with zeros
 
-    dft(complexI, complexI);            // this way the result may fit in the source matrix
+    dft(complexI, complexI); // this way the result may fit in the source matrix
 
     // compute the magnitude and switch to logarithmic scale
     // => log(1 + sqrt(Re(DFT(I))^2 + Im(DFT(I))^2))
     split(complexI, planes);                   // planes[0] = Re(DFT(I), planes[1] = Im(DFT(I))
     magnitude(planes[0], planes[1], planes[0]);// planes[0] = magnitude
     Mat magI = planes[0];
-
+    cout<<magI<<endl;
     magI += Scalar::all(1);                    // switch to logarithmic scale
+    cout<<magI<<endl;
     log(magI, magI);
+    cout<<magI<<endl;
 
     // crop the spectrum, if it has an odd number of rows or columns
     magI = magI(Rect(0, 0, magI.cols & -2, magI.rows & -2));
@@ -41,7 +43,7 @@ int main(int argc, char ** argv)
 
     Mat q0(magI, Rect(0, 0, cx, cy));   // Top-Left - Create a ROI per quadrant
     Mat q1(magI, Rect(cx, 0, cx, cy));  // Top-Right
-    Mat q2(magI, Rect(0, cy, cx, cy));  // Bottom-Left
+    Mat q2(magI, Rect(0, cy, cx, cy));  // Botto-m-Left
     Mat q3(magI, Rect(cx, cy, cx, cy)); // Bottom-Right
 
     Mat tmp;                           // swap quadrants (Top-Left with Bottom-Right)
@@ -55,11 +57,15 @@ int main(int argc, char ** argv)
 
     normalize(magI, magI, 0, 1, CV_MINMAX); // Transform the matrix with float values into a
                                             // viewable image form (float between values 0 and 1).
-
     imshow("Input Image"       , I   );    // Show the result
     imshow("spectrum magnitude", magI);
-    imwrite("out.jpg",magI);
-    waitKey();
+    imwrite("CV_DFT/out.jpg",magI);
+    waitKey(0);
 
+    Mat ifft;
+    idft(complexI,ifft,DFT_REAL_OUTPUT);
+    normalize(ifft,ifft,0,1,CV_MINMAX);
+    imshow("idft",ifft);
+    waitKey(0);
     return 0;
 }
