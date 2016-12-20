@@ -215,7 +215,7 @@
 	<opencv2/highgui/highgui.hpp>
 	<math.h>
 
-1482154944 source:/home/ysing/codeblock Projects/OpenCV/CV_DFT/Cv_dft.cpp
+1482220852 source:/home/ysing/codeblock Projects/OpenCV/CV_DFT/Cv_dft.cpp
 	<stdio.h>
 	<iostream>
 	<opencv2/core/core.hpp>
@@ -252,10 +252,20 @@
 	<iostream>
 	"CV_helper/DFT_helper.h"
 
-1482158603 /home/ysing/codeblock Projects/OpenCV/CV_helper/DFT_helper.h
+1482233820 /home/ysing/codeblock Projects/OpenCV/CV_helper/DFT_helper.h
 	<stdio.h>
 	<iostream>
 	<vector>
 	<complex.h>
 	<bitset>
+	<limits.h>
+
+1482234898 source:/home/ysing/codeblock Projects/OpenCV/CV_DFT/FFT.cpp
+	<unistd.h>
+	<iostream>
+	<complex>
+	"CV_helper/DFT_helper.h"
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
 

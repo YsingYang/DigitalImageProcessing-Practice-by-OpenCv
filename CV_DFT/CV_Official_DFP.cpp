@@ -8,7 +8,7 @@ using namespace std;
 int main(int argc, char ** argv)
 {
 
-    Mat I = imread("CV_DFT/82.jpg", CV_LOAD_IMAGE_GRAYSCALE);
+    Mat I = imread("CV_DFT/test.png", CV_LOAD_IMAGE_GRAYSCALE);
     if( I.empty())
         return -1;
 

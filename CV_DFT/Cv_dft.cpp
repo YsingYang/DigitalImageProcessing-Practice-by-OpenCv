@@ -11,14 +11,16 @@ using namespace cv;
 
 int main(){
     const double PI=3.1415926;
-    Mat img = imread("CV_DFT/82.jpg",CV_LOAD_IMAGE_GRAYSCALE);
+    Mat img = imread("CV_DFT/82.png",CV_LOAD_IMAGE_GRAYSCALE);
     int r = img.rows,c = img.cols;
     vector<vector<complex<double> > > comp(r,vector<complex<double> > (c));
    // vector<vector<double>>  dst(r,vector<double> (c));
-    Mat dst(r,c,CV_64FC1,0.0);
+    Mat dst(r,c,CV_64F,0.0);
     for(int i=0;i<r;++i){
         for(int j=0;j<c;++j){
-            img.at<uchar> (i,j) *=pow(-1,i+j);
+            if((i+j)%2==1){
+                    img.at<uchar> (i,j) = 255 - img.at<uchar>(i,j);
+            }
         }
     }
     for(int u=0;u<r;++u){
@@ -33,15 +35,23 @@ int main(){
                 }
             }
             comp[u][v] = temp;
-            dst.at<double> (u,v) =   (double) sqrt((temp.real(),2)+pow(temp.imag(),2));
+            dst.at<double> (u,v) =    sqrt(pow(temp.real(),2)+pow(temp.imag(),2));
         }
         cout<<u<<endl;
     }
     dst += Scalar::all(1.0);
     log(dst,dst);
     normalize(dst, dst, 0, 1,CV_MINMAX);
+    dst *=255;
+    Mat dft_8(r,c,CV_8U);
+    for(int i=0;i<r;++i){
+        for(int j=0;j<c;++j){
+            dft_8.at<uchar>(i,j) = floor(dst.at<double>(i,j));
+        }
+    }
     imshow("dst",dst);
-    Mat dst_to_img(r,c,CV_64FC1,Scalar(0.0));
+    imwrite("CV_DFT/dft_8.png",dft_8);
+   Mat dst_to_img(r,c,CV_64F,0.0);
     //vector<vector<complex<double> > > dst_to_img (r,vector<complex<double> > (c));
     for(int i=0;i<r;++i){
         for(int j=0;j<c;++j){
@@ -53,14 +63,24 @@ int main(){
                     temp += comp[u][v]*e;
                 }
             }
-            dst_to_img.at<double>(i,j) =abs(temp.real())*pow(-1,i+j) /(r*c);
+            dst_to_img.at<double>(i,j) =abs(temp.real())/(r*c);
+            if((i+j)%2==1)
+                dst_to_img.at<double>(i,j) = 255 - dst_to_img.at<double>(i,j);
             //cout<<sqrt((dst_to_img[i][j].real(),2)+pow(dst_to_img[i][j].imag(),2))<<endl;
             //res.at<uchar> (i,j) =  (int)sqrt((dst_to_img[i][j].real(),2)+pow(dst_to_img[i][j].imag(),2));
         }
     }
     normalize(dst_to_img,dst_to_img,0,1,CV_MINMAX);
     imshow("'res",dst_to_img);
-    imwrite("res.jpg",dst_to_img);
+   dst_to_img *=255;
+    cout<<dst_to_img<<endl;
+    Mat res_8(r,c,CV_8UC1);
+    for(int i=0;i<r;++i){
+        for(int j=0;j<c;++j){
+                res_8.at<uchar>(i,j) = floor(dst_to_img.at<double>(i,j));
+        }
+    }
+   imwrite("CV_DFT/res.png",res_8);
     waitKey(0);
     return 1;
 }
