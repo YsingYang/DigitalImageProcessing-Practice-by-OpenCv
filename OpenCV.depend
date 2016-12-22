@@ -146,7 +146,7 @@
 	<opencv2/core/core.hpp>
 	<opencv2/highgui/highgui.hpp>
 
-1481714946 source:/home/ysing/codeblock Projects/OpenCV/EqualizeHist/My_histgram_cal.cpp
+1482394117 source:/home/ysing/codeblock Projects/OpenCV/EqualizeHist/My_histgram_cal.cpp
 	<iostream>
 	<stdio.h>
 	<opencv2/core/core.hpp>
@@ -169,7 +169,7 @@
 	<opencv2/highgui/highgui.hpp>
 	<opencv2/imgproc/imgproc.hpp>
 
-1481715221 /home/ysing/codeblock Projects/OpenCV/CV_helper/Histogram.h
+1482394247 /home/ysing/codeblock Projects/OpenCV/CV_helper/Histogram.h
 	<iostream>
 	<stdio.h>
 	<opencv2/core/core.hpp>
@@ -252,15 +252,18 @@
 	<iostream>
 	"CV_helper/DFT_helper.h"
 
-1482233820 /home/ysing/codeblock Projects/OpenCV/CV_helper/DFT_helper.h
+1482243741 /home/ysing/codeblock Projects/OpenCV/CV_helper/DFT_helper.h
 	<stdio.h>
 	<iostream>
 	<vector>
 	<complex.h>
 	<bitset>
 	<limits.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
 
-1482234898 source:/home/ysing/codeblock Projects/OpenCV/CV_DFT/FFT.cpp
+1482239905 source:/home/ysing/codeblock Projects/OpenCV/CV_DFT/FFT.cpp
 	<unistd.h>
 	<iostream>
 	<complex>
@@ -268,4 +271,54 @@
 	<opencv2/core/core.hpp>
 	<opencv2/highgui/highgui.hpp>
 	<opencv2/imgproc/imgproc.hpp>
+
+1482243715 source:/home/ysing/codeblock Projects/OpenCV/CV_frequency_filter/fq.filter.cpp
+	<unistd.h>
+	<iostream>
+	<complex>
+	"CV_helper/DFT_helper.h"
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+
+1482310969 source:/home/ysing/codeblock Projects/OpenCV/CV_RGB/RGB_.cpp
+	<stdio.h>
+	<iostream>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	"CV_helper/Histogram.h"
+
+1482320973 source:/home/ysing/codeblock Projects/OpenCV/CV_RGB/RGB_Averger_Equalized.cpp
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<CV_helper/Histogram.h>
+
+1482394427 source:/home/ysing/codeblock Projects/OpenCV/CV_RGB/RGB_2_HSI.cpp
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<CV_helper/RGB_2_HSI.h>
+	<CV_helper/Histogram.h>
+
+1482394596 /home/ysing/codeblock Projects/OpenCV/CV_helper/RGB_2_HSI.h
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<math.h>
+	<cstdlib>
+	<unistd.h>
+
+1482330905 source:/home/ysing/codeblock Projects/OpenCV/CV_RGB/RGB_to_hsi.cpp
+	<opencv2/opencv.hpp>
+	<math.h>
+	<vector>
+	<CV_helper/RGB_2_HSI.h>
 

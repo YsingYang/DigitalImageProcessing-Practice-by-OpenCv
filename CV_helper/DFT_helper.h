@@ -86,7 +86,7 @@ void out_put_Vec(vector<vector<complex<double> >> &intervet){
         }
         cout<<endl;
     }
-}
+}//out_put_vector
 
 void  img_fft( vector<vector< complex<double> > > &intervet){
     int rsize =intervet.size(),csize = intervet[0].size();
@@ -104,7 +104,7 @@ void  img_fft( vector<vector< complex<double> > > &intervet){
             intervet[j][i] = temp[j];
         }
     }
-}
+}//2d_fft
 
  void idft_reverse(vector<vector<complex<double> >> &res){
     int rsize = res.size(),csize = res[0].size();
@@ -120,4 +120,25 @@ void  img_fft( vector<vector< complex<double> > > &intervet){
             swap(res[f++][i],res[r--][i]);
         }
     }
- }
+ }//ifft变换回去后 需要将其中元素置换 因为fft ifft使用相同函数.
+
+ void copy_img_vec(    vector<vector< complex<double> > > &vec,const Mat &img){//函数没写很完善 默认vec空间是大于img的,img 默认为int
+    int ir = img.rows,ic = img.cols;
+    int vr = vec.size(),vc = vec[0].size();
+    for(int i=0;i<ir;++i){
+        for(int j=0;j<ic;++j){
+            vec[i][j] = img.at<uchar>(i,j);
+        }
+    }
+}
+
+ void copy_img_vec_float(    vector<vector< complex<double> > > &vec,const Mat &img){//函数没写很完善 默认vec空间是大于img的,img 默认为int
+    int ir = img.rows,ic = img.cols;
+    int vr = vec.size(),vc = vec[0].size();
+    for(int i=0;i<ir;++i){
+        for(int j=0;j<ic;++j){
+            vec[i][j] = img.at<int8_t>(i,j);
+        }
+    }
+}
+

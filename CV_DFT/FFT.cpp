@@ -2,7 +2,6 @@
 #include <iostream>
 #include <complex>
 #include "CV_helper/DFT_helper.h"
-#define MAX 200
 #include<opencv2/core/core.hpp>
 #include<opencv2/highgui/highgui.hpp>
 #include<opencv2/imgproc/imgproc.hpp>
