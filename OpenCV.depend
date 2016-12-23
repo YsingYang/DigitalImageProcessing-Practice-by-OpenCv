@@ -297,7 +297,7 @@
 	<opencv2/imgproc/imgproc.hpp>
 	<CV_helper/Histogram.h>
 
-1482394427 source:/home/ysing/codeblock Projects/OpenCV/CV_RGB/RGB_2_HSI.cpp
+1482411989 source:/home/ysing/codeblock Projects/OpenCV/CV_RGB/RGB_2_HSI.cpp
 	<iostream>
 	<stdio.h>
 	<opencv2/core/core.hpp>
@@ -321,4 +321,57 @@
 	<math.h>
 	<vector>
 	<CV_helper/RGB_2_HSI.h>
+
+1482408770 source:/home/ysing/codeblock Projects/OpenCV/CV_chapter5_filter/arithmetic_mean_filter.cpp
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<CV_helper/Filter.h>
+
+1482416276 /home/ysing/codeblock Projects/OpenCV/CV_helper/Filter.h
+	<stdio.h>
+	<iostream>
+	<vector>
+	<complex.h>
+	<bitset>
+	<limits.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+
+1482411298 source:/home/ysing/codeblock Projects/OpenCV/CV_Denoise/noise_generator.cpp
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<CV_helper/Noise_helper.h>
+
+1482415574 /home/ysing/codeblock Projects/OpenCV/CV_helper/Noise_helper.h
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<random>
+
+1482416906 source:/home/ysing/codeblock Projects/OpenCV/CV_Denoise/Impulse_Noise_generator.cpp
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<CV_helper/Noise_helper.h>
+	<CV_helper/Filter.h>
+
+1482414914 source:/home/ysing/codeblock Projects/OpenCV/CV_Denoise/Gaussian_noise_generator.cpp
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<CV_helper/Noise_helper.h>
+	<CV_helper/Filter.h>
 

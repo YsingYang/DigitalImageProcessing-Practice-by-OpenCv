@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="CV_RGB/RGB_2_HSI.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="CV_helper/Filter.h" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1416" topLine="38" />
+			<Cursor1 position="4390" topLine="3" />
 		</Cursor>
 	</File>
 	<File name="CV_helper/DFT_helper.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="111" topLine="21" />
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="CV_helper/RGB_2_HSI.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="499" topLine="57" />
+		</Cursor>
+	</File>
+	<File name="CV_helper/Noise_helper.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1388" topLine="16" />
+		</Cursor>
+	</File>
+	<File name="CV_Denoise/Impulse_Noise_generator.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1083" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="CV_helper/Histogram.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2726" topLine="56" />
-		</Cursor>
-	</File>
-	<File name="CV_helper/RGB_2_HSI.h" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2653" topLine="12" />
+			<Cursor1 position="1446" topLine="67" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
