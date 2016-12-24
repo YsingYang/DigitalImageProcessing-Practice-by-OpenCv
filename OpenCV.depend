@@ -169,7 +169,7 @@
 	<opencv2/highgui/highgui.hpp>
 	<opencv2/imgproc/imgproc.hpp>
 
-1482394247 /home/ysing/codeblock Projects/OpenCV/CV_helper/Histogram.h
+1482502049 /home/ysing/codeblock Projects/OpenCV/CV_helper/Histogram.h
 	<iostream>
 	<stdio.h>
 	<opencv2/core/core.hpp>
@@ -297,7 +297,7 @@
 	<opencv2/imgproc/imgproc.hpp>
 	<CV_helper/Histogram.h>
 
-1482411989 source:/home/ysing/codeblock Projects/OpenCV/CV_RGB/RGB_2_HSI.cpp
+1482496523 source:/home/ysing/codeblock Projects/OpenCV/CV_RGB/RGB_2_HSI.cpp
 	<iostream>
 	<stdio.h>
 	<opencv2/core/core.hpp>
@@ -374,4 +374,13 @@
 	<opencv2/imgproc/imgproc.hpp>
 	<CV_helper/Noise_helper.h>
 	<CV_helper/Filter.h>
+
+1482502713 source:/home/ysing/codeblock Projects/OpenCV/CV_RGB/Aver_Hue.cpp
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<CV_helper/RGB_2_HSI.h>
+	<CV_helper/Histogram.h>
 

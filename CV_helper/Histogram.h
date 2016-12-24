@@ -103,5 +103,6 @@ void show_Hist(Mat &img,int channel,string name,int fwrited){//如果fwrited 为
     Mat Hist_graph= out_Histogram(Hist,maxPixel);
     imshow(name,Hist_graph);
     //string address = "CV_helper/"+name+""
-    imwrite("CV_helper/"+name+".jpg",Hist_graph);
+    if(fwrited)
+        imwrite("CV_helper/"+name+".jpg",Hist_graph);
 }
