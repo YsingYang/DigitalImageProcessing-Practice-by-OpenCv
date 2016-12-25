@@ -5,53 +5,37 @@
 #include<opencv2/highgui/highgui.hpp>
 #include<opencv2/imgproc/imgproc.hpp>
 #include "CV_helper/Histogram.h"
+#include "CV_helper/Filter.h"
 
 using namespace std;
 using namespace cv;
 //mask = 1/9[[1,1,1].[1.1.1],[1,1,1]]
 int main(){
-    Mat src1;
-    int msize;
-    vector<int> histgram1;
-    vector<int> histgram2;
+    Mat img;
+    int k;
     int max1=0,max2=0;
-    src1 = imread("/home/ysing/codeblock Projects/OpenCV/CV_filter/82.png",0);
-    Mat src2 = Mat::zeros(src1.rows,src1.cols,CV_8U);
-    //Mat src2 = src1.clone();
-     cout<<src1.rows<<"  "<<src2.rows;
-     cout<<"  "<<src1.cols<<"  "<<src2.cols<<endl;
-    cout<<"Enter the mask Size";
-    cin>>msize;//msize<rsize
-    //边缘处理
-    for(int i=0;i<src1.rows;++i){
-        for(int j=0;j<src2.cols;++j){
-            int rstart = i-((msize-1)>>1),rends = i+((msize-1)>>1);
-            int cstart = j-((msize-1)>>1),cends = j+((msize-1)>>1);
-            int  intensity=0;
-            int count=0;
-            for(int p = rstart;p<=rends;++p){
-                for(int q= cstart;q<=cends;++q){
-                    int nowp = (p<0?src1.rows+p:(p>=src1.rows?p-src1.rows:p) );
-                    int nowq = (q<0?src1.cols+q: (q>=src1.cols?q-src1.cols:q));
-                    intensity += src1.at<uchar>(nowp,nowq);
-                }
-            }
-            //cout<<intensity/9<<"  "<<(int)src1.at<uchar>(i,j)<<endl;
-            src2.at<uchar>(i,j) = (uchar)(intensity/(msize*msize));
+    img = imread("/home/ysing/codeblock Projects/OpenCV/CV_filter/82.png",0);
+    cout<<"Please input k"<<endl;
+    cin>>k;
+    Mat aver_filter1 = arithmetic_MF(img,3,3);
+    vector<vector<int>>mask(img.rows,vector<int>(img.cols));//使用vector暂存mask;
+    //Mat aver_filter2 = arithmetic_MF(img,7,7);
+    //Mat aver_filter3 = arithmetic_MF(img,11,11);
+    Mat dst(img.rows,img.cols,CV_8UC1);
+    imshow("aver_filter1",aver_filter1);
+    for(int i=0;i<img.rows;++i){
+        for(int j=0;j<img.cols;++j){
+            mask[i][j] =(int) img.at<uchar>(i,j) -(int) aver_filter1.at<uchar>(i,j);
+            int temp = mask[i][j]*k + img.at<uchar>(i,j);
+            if(temp>255)
+                temp=255;
+            if(temp<0)
+                temp =0;
+            dst.at<uchar>(i,j) = temp;
         }
     }
-    histgram1 = cal_histogram(src1,max1);
-    histgram2 = cal_histogram(src2,max2);
-    Mat histgraph1 = out_Histogram(histgram1,max1);
-    Mat histgraph2 = out_Histogram(histgram2,max2);
-    imshow("original_hist",histgraph1);
-    imshow("filter_hist",histgraph2);
-    imshow("original",src1);
-    imshow("filter",src2);
-    imwrite("CV_filter/Averaging_filter_hist.jpg",histgraph2);
-    imwrite("CV_filteroriginal_hist.jpg",histgraph1);
-    imwrite("CV_filteroriginal_image.jpg",src1);
-    imwrite("CV_filter/Averagingfilter_image.jpg",src2);
+    imshow("dst",dst);
+   imwrite("CV_filter/high-boost_k="+to_string(k)+".jpg",dst);
     waitKey(0);
     return 1;
 }

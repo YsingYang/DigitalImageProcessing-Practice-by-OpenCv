@@ -154,15 +154,16 @@
 	<opencv2/imgproc/imgproc.hpp>
 	"CV_helper/Histogram.h"
 
-1481372591 source:/home/ysing/codeblock Projects/OpenCV/CV_filter/Space_filter.cpp
+1482590802 source:/home/ysing/codeblock Projects/OpenCV/CV_filter/Space_filter.cpp
 	<iostream>
 	<stdio.h>
 	<opencv2/core/core.hpp>
 	<opencv2/highgui/highgui.hpp>
 	<opencv2/imgproc/imgproc.hpp>
 	"CV_helper/Histogram.h"
+	"CV_helper/Filter.h"
 
-1481295298 source:/home/ysing/codeblock Projects/OpenCV/CV_filter/CV_Image_Sharpening.cpp
+1481716354 source:/home/ysing/codeblock Projects/OpenCV/CV_filter/CV_Image_Sharpening.cpp
 	<iostream>
 	<stdio.h>
 	<opencv2/core/core.hpp>
@@ -207,7 +208,7 @@
 	<opencv2/highgui.hpp>
 	<opencv2/imgproc/imgproc.hpp>
 
-1481633304 source:/home/ysing/codeblock Projects/OpenCV/CV_Scale/Scale_bi_LInear.cpp
+1482583670 source:/home/ysing/codeblock Projects/OpenCV/CV_Scale/Scale_bi_LInear.cpp
 	<stdio.h>
 	<iostream>
 	<opencv2/core/core.hpp>

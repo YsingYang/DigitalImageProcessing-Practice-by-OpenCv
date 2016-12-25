@@ -16,6 +16,8 @@ int main(){
     imshow("image",img);
     int maxPi1 =0 ,maxPi2 = 0;
     vector<int> histogram = cal_histogram(img,maxPi1);
+    Mat hist = out_Histogram(histogram,maxPi1);
+    imshow("original_hist",hist);
 
     Equalized(img,histogram);
   // vector<int> Ehistgram = cal_histogram(dst,maxPi2);
