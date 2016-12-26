@@ -115,7 +115,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="CV_filter/Space_filter.cpp" />
+		<Unit filename="CV_filter/Median_Filter.cpp" />
 		<Unit filename="CV_helper/DFT_helper.h" />
 		<Unit filename="CV_helper/Filter.h" />
 		<Unit filename="CV_helper/Histogram.h" />

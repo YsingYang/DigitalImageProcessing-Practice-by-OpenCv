@@ -41,7 +41,7 @@ Mat arithmetic_MF(const Mat &img,int rz,int cz){
         }
     }
     return dst;
-}//算数平均滤波 大小指定仅支持奇数.
+}
 
 Mat harmonic_MF(const Mat &img,int rz,int cz){
     while((rz&1)==0){
@@ -75,7 +75,7 @@ Mat harmonic_MF(const Mat &img,int rz,int cz){
         }
     }
     return dst;
-}//谐调平均滤波
+}
 
 
 Mat contraharmonic_MF(const Mat &img,int rz,int cz,float Q){
@@ -117,7 +117,7 @@ Mat contraharmonic_MF(const Mat &img,int rz,int cz,float Q){
         }
     }
     return dst;
-}//反谐调平均滤波
+}
 
 Mat geometric_MF(const Mat &img,int rz,int cz){
     while((rz&1)==0){
@@ -150,7 +150,7 @@ Mat geometric_MF(const Mat &img,int rz,int cz){
         }
     }
     return dst;
-}//几何滤波
+}
 
 Mat median_MF(const Mat &img,int rz,int cz){
     while((rz&1)==0){
@@ -176,12 +176,12 @@ Mat median_MF(const Mat &img,int rz,int cz){
                     median.push_back(img.at<uchar>(nowu,nowv));
                 }
             }
-            sort(median.begin(),median.end());//可用堆排序或者快排patition的思想进行优化时间复杂度
+            sort(median.begin(),median.end());
             dst.at<uchar>(i,j) = median[(rz*cz)>>1];
         }
     }
     return dst;
-}//中值滤波
+}
 
 Mat min_MF(const Mat &img,int rz,int cz){
      while((rz&1)==0){
@@ -211,4 +211,4 @@ Mat min_MF(const Mat &img,int rz,int cz){
         }
     }
     return dst;
-}//最小值滤波
+}

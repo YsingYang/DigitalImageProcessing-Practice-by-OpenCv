@@ -35,7 +35,7 @@ int main(){
         }
     }
     imshow("dst",dst);
-    imwrite("CV_filter/high-boost_k="+to_string(k)+".jpg",dst);
+   imwrite("CV_filter/high-boost_k="+to_string(k)+".jpg",dst);
     waitKey(0);
     return 1;
 }

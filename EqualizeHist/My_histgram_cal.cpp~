@@ -14,7 +14,7 @@ int main(){
     Mat img,dst;
     img = imread("/home/ysing/codeblock Projects/OpenCV/EqualizeHist/82.png",0);//0为灰度图，即使是灰度图也要这么用
     imshow("image",img);
-    int maxPi1 =0 ,maxPi2 = 0;    //max用于存储像素值中的数量最大值,以便显示直方图时不会超出范围
+    int maxPi1 =0 ,maxPi2 = 0;
     vector<int> histogram = cal_histogram(img,maxPi1);
     Mat hist = out_Histogram(histogram,maxPi1);
     imshow("original_hist",hist);

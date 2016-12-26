@@ -13,8 +13,7 @@ using namespace cv;
 
 #define M_PI 3.1415926535897932384
 
-int log2(int N)    /*function to calculate the log2(.) of int numbers*/
-{
+int log2(int N){    /*number of bit */
   int k = N, i = 0;
   while(k) {
     k >>= 1;
@@ -22,14 +21,13 @@ int log2(int N)    /*function to calculate the log2(.) of int numbers*/
   }
   return i - 1;
 }
-
-int check(int n)    //checking if the number of element is a power of 2
-{
+//check是否为pow(2,X)的数
+int check(int n){
   return n > 0 && (n & (n - 1)) == 0;
 }
 
-int reverse(int N, int n)    //calculating revers number
-{
+//由于蝶型算法需要逆转数组中的次序,逆转的方法为调换index的bit,如对于4个bit表示的1100逆转后结果为0011
+int reverse(int N, int n){
   int j, p = 0;
   for(j = 1; j <= log2(N); j++) {
     if(n & (1 << (log2(N) - j)))
@@ -37,9 +35,8 @@ int reverse(int N, int n)    //calculating revers number
   }
   return p;
 }
-
-void ordina(vector<complex<double>> & f1, int N) //using the reverse order in the array
-{
+//使用逆转的数组下表重组序列(该数组序列其实就是像素值的序列)
+void ordina(vector<complex<double>> & f1, int N){
   vector<complex<double> >f2(N);
   for(int i = 0; i < N; i++)
     f2[i] = f1[reverse(N, i)];
@@ -47,8 +44,9 @@ void ordina(vector<complex<double>> & f1, int N) //using the reverse order in th
     f1[j] = f2[j];
 }
 
-void transform(vector<complex<double>>& f, int N) //
-{
+//进行快速傅里叶变换,这里旋转因子值分配了N/2个,因为快速傅里叶变换并不需要算出所有的旋转因子,
+//这里用了网上给的优化方法,通过极坐标计算旋转因子1,后面的旋转因为可以有幂i得到,然后就可以通过快速傅里叶变换的式子得到F[I]结果
+void transform(vector<complex<double>>& f, int N){
   ordina(f, N);    //first: reverse order
   complex<double> *W;
   W = (complex<double> *)malloc(N / 2 * sizeof(complex<double>));
@@ -75,8 +73,8 @@ void transform(vector<complex<double>>& f, int N) //
 void FFT(vector<complex<double>> &f, int N)
 {
   transform(f, N);
-//multiplying by step
 }
+
 
 void out_put_Vec(vector<vector<complex<double> >> &intervet){
     int rsize = intervet.size(), csize = intervet[0].size();
@@ -88,6 +86,7 @@ void out_put_Vec(vector<vector<complex<double> >> &intervet){
     }
 }//out_put_vector
 
+//二维fft,由于上面的ff2是针对一维的,虽说二维可以由一维算的,但为了方便,重写了个利用一维fft计算二维fft的函数,
 void  img_fft( vector<vector< complex<double> > > &intervet){
     int rsize =intervet.size(),csize = intervet[0].size();
     for(int i=0;i<rsize;++i){
@@ -106,6 +105,8 @@ void  img_fft( vector<vector< complex<double> > > &intervet){
     }
 }//2d_fft
 
+//进行ifft时,需要逆转数组下表,因为开始没有看到书上的取共轭,除以MN得到反变换,所以这里先逆转除数组第一个数外的数,具体的swap就
+//是swap(f[1],发f[size-1]),有点像快排的patition.
  void idft_reverse(vector<vector<complex<double> >> &res){
     int rsize = res.size(),csize = res[0].size();
     for(int i=0;i<rsize;++i){
@@ -122,6 +123,7 @@ void  img_fft( vector<vector< complex<double> > > &intervet){
     }
  }//ifft变换回去后 需要将其中元素置换 因为fft ifft使用相同函数.
 
+//将图片像素点暂存至数组中
  void copy_img_vec(    vector<vector< complex<double> > > &vec,const Mat &img){//函数没写很完善 默认vec空间是大于img的,img 默认为int
     int ir = img.rows,ic = img.cols;
     int vr = vec.size(),vc = vec[0].size();
@@ -132,6 +134,7 @@ void  img_fft( vector<vector< complex<double> > > &intervet){
     }
 }
 
+//上述的float类型
  void copy_img_vec_float(    vector<vector< complex<double> > > &vec,const Mat &img){//函数没写很完善 默认vec空间是大于img的,img 默认为int
     int ir = img.rows,ic = img.cols;
     int vr = vec.size(),vc = vec[0].size();
