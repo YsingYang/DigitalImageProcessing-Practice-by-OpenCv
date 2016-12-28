@@ -22,7 +22,7 @@ int main(){
     }
     cout<<rsize<<"  "<<csize<<endl;
     //getOptimalDFTSize
-    vector<vector< complex<double> > > intervet(rsize,vector<complex<double> > (csize));
+    vector<vector< complex<double> > > intervet(rsize,vector<complex<double> > (csize));//用一个二维vector暂存像素点
     for(int i =0;i<rs;++i){
         for(int j=0;j<cs;++j){
             if(((i+j)&1)==1)

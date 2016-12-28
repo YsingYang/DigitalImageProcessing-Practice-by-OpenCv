@@ -145,3 +145,13 @@ void  img_fft( vector<vector< complex<double> > > &intervet){
     }
 }
 
+Mat out_normalized(const Mat &img){
+    int rz = img.rows,cz = img.cols;
+    Mat dst(rz,cz,CV_8UC1);
+    for(int i=0;i<rz;++i){
+        for(int j=0;j<cz;++j){
+            dst.at<uchar>(i,j) =(int)(img.at<float>(i,j)*255);
+        }
+    }
+    return dst;
+}

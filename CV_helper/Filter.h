@@ -93,16 +93,16 @@ Mat contraharmonic_MF(const Mat &img,int rz,int cz,float Q){
 
     for(int i=0;i<rs;++i){
         for(int j=0;j<cs;++j){
-            float intensity_m =0.0,intensity_n=0.0;
+            double  intensity_m =0.0,intensity_n=0.0;
             int rstart = i - (rz>>1),rends = i+(rz>>1);
             int cstart = j- (cz >>1),cends = j+(cz>>1);
             for(int u=rstart;u<=rends&&intensity_n!=-1;++u){
                 for(int v= cstart;v<=cends&&intensity_n!=-1;++v){
                     int nowu = u<0?rs+u:(u>=rs?u-rs:u);
                     int nowv = v<0?cs+v:(v>=cs?v-cs:v);
-                    if(Q<-1&&img.at<uchar>(nowu,nowv)==0)
+           /*         if(Q<-1&&img.at<uchar>(nowu,nowv)==0)
                         intensity_m =-1;
-                    else
+                    else*/
                         intensity_m += pow(img.at<uchar>(nowu,nowv),Q+1);
                    if(Q<0&&img.at<uchar>(nowu,nowv)==0){
                         intensity_n=-1;
@@ -112,8 +112,9 @@ Mat contraharmonic_MF(const Mat &img,int rz,int cz,float Q){
                     }
                 }
             }
-            //cout<<intensity_m<<"   "<<intensity_n<<endl;
-            dst.at<uchar>(i,j) =intensity_n==-1?0: (int)(intensity_m*1.0/intensity_n);
+            cout<<intensity_m<<"   "<<intensity_n<<endl;
+            dst.at<uchar>(i,j) =intensity_n==-1?0: (int)(intensity_m*1.0/intensity_n)>255?255:(int)(intensity_m*1.0/intensity_n);
+            //cout<<(int)dst.at<uchar>(i,j)<<endl;
         }
     }
     return dst;

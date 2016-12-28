@@ -14,8 +14,8 @@ int main(){
    // int8_t m[12]= {0,1,0,1,-4,1,0,1,0};
     //int8_t m[16] ={1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
 
-    Mat mask = (Mat_<int8_t>(3,3)<<1,1,1,1,-8,1,1,1,1);
-    //Mat mask(7,7,CV_8UC1,Scalar::all(1));
+    //Mat mask = (Mat_<int8_t>(3,3)<<1,1,1,1,-8,1,1,1,1);
+    Mat mask(7,7,CV_8UC1,Scalar::all(1));
     cout<<mask;
     int rs = img.rows,cs = img.cols;
     int frs = rs + mask.rows -1,frc = cs +mask.cols-1;
@@ -45,8 +45,8 @@ int main(){
             filted[i][j] = inter_img[i][j] *inter_mask[i][j];
            // cout<<"img   "<<inter_img[i][j]<<"   mask"<<inter_mask[i][j]<<endl;
         }
-    }
-    img_fft(filted);
+    }//阵列乘法
+    img_fft(filted);//IFFT
     idft_reverse(filted);
     Mat res(rs,cs,CV_32F);
     for(int i=0;i<rs;++i){
@@ -56,7 +56,10 @@ int main(){
     }
   // cout<<res<<endl;
     normalize(res,res,0,1,CV_MINMAX);
-     imshow("res",res);
+    Mat dst = out_normalized(res);
+    imshow("res",dst);
+    imwrite("CV_frequency_filter/7*7_AMF.jpg",dst);
+    // imshow("res",res);
      waitKey(0);
     return 1;
 }

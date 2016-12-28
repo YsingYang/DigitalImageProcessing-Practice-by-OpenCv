@@ -24,13 +24,13 @@ int main(){
     Mat ari_result = arithmetic_MF(dst,rz,cz);
     Mat geo_result = geometric_MF(dst,rz,cz);
     Mat medi_result = median_MF(dst,rz,cz);
-    imshow("ari_result",ari_result);
-    imwrite("CV_Denoise/arithmetic_MF_"+to_string(rz)+"size.jpg",ari_result);
-    imwrite("CV_Denoise/geo_result_"+to_string(rz)+"size.jpg",geo_result);
-    imwrite("CV_Denoise/medi_result_"+to_string(rz)+"size.jpg",medi_result);
+    //imshow("ari_result",ari_result);
+    //imwrite("CV_Denoise/arithmetic_MF_"+to_string(rz)+"size.jpg",ari_result);
+    //imwrite("CV_Denoise/geo_result_"+to_string(rz)+"size.jpg",geo_result);
+   // imwrite("CV_Denoise/medi_result_"+to_string(rz)+"size.jpg",medi_result);
     imshow("geo_result",geo_result);
     imshow("medi_result",medi_result);
-    imwrite("CV_Denoise/Gaussian_img.jpg",dst);
+ //   imwrite("CV_Denoise/Gaussian_img.jpg",dst);
     imshow("dst",dst);
     waitKey(0);
     return 1;

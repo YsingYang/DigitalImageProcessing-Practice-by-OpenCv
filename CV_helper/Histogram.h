@@ -80,7 +80,7 @@ Mat Equalized(const Mat &img,vector<int> Pixelvector){
     return dst;
 }*/
 
-//用于3通道以上的直方图均衡化,可以指定具体通道的直方图均衡化 
+//用于3通道以上的直方图均衡化,可以指定具体通道的直方图均衡化
 
 void Equalized(Mat &img,vector<int> Pixelvector,int channel){
     vector<double> Pdf_Vector(256,0);
@@ -99,6 +99,27 @@ void Equalized(Mat &img,vector<int> Pixelvector,int channel){
         }
     }
 }
+//返回一个矩阵的直方图均衡化
+Mat Equalized_R(Mat img,vector<int> Pixelvector,int channel){
+    vector<double> Pdf_Vector(256,0);
+    vector<uchar> CDF_Vector(256,0);
+    int count_Pixel = img.rows * img.cols;
+    double last_cdf= 0.0;
+    for(int i=0;i<256;++i){
+        Pdf_Vector[i] = Pixelvector[i]*1.0/count_Pixel;
+        double temp = Pdf_Vector[i] *255.0 + last_cdf;
+         CDF_Vector[i] = (uchar)(temp - floor(temp)>=0.5? ceil(temp):floor(temp));
+        last_cdf = temp;
+    }
+    Mat dst = img.clone();
+    for(int i=0;i<img.rows;++i){
+        for(int j=0;j<img.cols;++j){
+            dst.at<Vec3b>(i,j)[channel] = CDF_Vector[img.at<Vec3b>(i,j)[channel]];
+        }
+    }
+    return dst;
+}
+
 
 //用于显示直方图.fwrited为是否导出图片,1为导出图片 ,name为给直方图的命名字符串,该函数主要调用了之前的计算和导出直方图矩阵的函数,用于直接显示图片的直方图
 

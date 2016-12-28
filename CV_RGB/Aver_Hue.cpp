@@ -23,24 +23,25 @@ Mat arithmetic_MF(const Mat &img,int rz,int cz,int channel){
     Mat dst =img.clone();
     for(int i=0;i<rs;++i){
         for(int j=0;j<cs;++j){
-            float intensity =0.0;
+            double  intensity =0.0;
             int rstart = i - (rz>>1),rends = i+(rz>>1);
             int cstart = j- (cz >>1),cends = j+(cz>>1);
             for(int u=rstart;u<=rends&&intensity!=-1;++u){
                 for(int v= cstart;v<=cends&&intensity!=-1;++v){
-                    int nowu = u<0?rs+u:(u>=rs?u-rs:u);
-                    int nowv = v<0?cs+v:(v>=cs?v-cs:v);
-                    intensity += img.at<Vec3b>(nowu,nowv)[0];
+                    int nowu = u<0?0:(u>=rs?rs-1:u);
+                    int nowv = v<0?0:(v>=cs?cs-1:v);
+                    intensity += img.at<Vec3b>(nowu,nowv)[channel];
                 }
             }
             intensity = intensity *1.0/(rz*cz);
-            dst.at<Vec3b>(i,j)[0] = (int)intensity;
+            dst.at<Vec3b>(i,j)[channel] = (int)intensity;
         }
     }
     return dst;
 }
 
 int main(){
+    //创建要进行滤波的图像
     Mat img(150,150,CV_8UC3);
     for(int i=0;i<150;++i){
         for(int j=0;j<150;++j){
@@ -56,17 +57,17 @@ int main(){
     imshow("ori",img);
     reHsi(img,dst);
     imshow("dst",dst);
-    cout<<dst<<endl;
      show_Hist(dst,0,"hsi_h",0);
       show_Hist(dst,1,"hsi_s",0);
       show_Hist(dst,2,"hsi_i",0);
-    dst = arithmetic_MF(dst,75,75,0);
+    dst = arithmetic_MF(dst,75,75,1);
     show_Hist(dst,0,"MF_hsi_h",0);
     show_Hist(dst,1,"MF_hsi_s",0);
       show_Hist(dst,2,"MF_hsi_i",0);
-    //imshow("MF",dst);
+    imshow("MF",dst);
     hsi2bgr(img,dst);
     imshow("img",img);
+    imwrite("CV_RGB/Sat_Ave.jpg",img);
     waitKey(0);
     return 0;
 }
