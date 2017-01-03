@@ -115,13 +115,13 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="CV_RGB/RGB_2_HSI.cpp" />
 		<Unit filename="CV_helper/DFT_helper.h" />
 		<Unit filename="CV_helper/Filter.h" />
+		<Unit filename="CV_helper/Guilded_helper.h" />
 		<Unit filename="CV_helper/Histogram.h" />
 		<Unit filename="CV_helper/Noise_helper.h" />
 		<Unit filename="CV_helper/RGB_2_HSI.h" />
-		<Unit filename="EqualizeHist/Equalized_imge.jpg" />
+		<Unit filename="Guilded_filter.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

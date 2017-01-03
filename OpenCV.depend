@@ -385,7 +385,7 @@
 	<CV_helper/RGB_2_HSI.h>
 	<CV_helper/Histogram.h>
 
-1483366715 source:/home/ysing/codeblock Projects/OpenCV/Guilded_filter.cpp
+1483433574 source:/home/ysing/codeblock Projects/OpenCV/Guilded_filter.cpp
 	<iostream>
 	<stdio.h>
 	<opencv2/core/core.hpp>
@@ -393,7 +393,7 @@
 	<opencv2/imgproc/imgproc.hpp>
 	"CV_helper/Guilded_helper.h"
 
-1483364731 /home/ysing/codeblock Projects/OpenCV/CV_helper/Guilded_helper.h
+1483432524 /home/ysing/codeblock Projects/OpenCV/CV_helper/Guilded_helper.h
 	<iostream>
 	<stdio.h>
 	<opencv2/core/core.hpp>
