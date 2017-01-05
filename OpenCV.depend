@@ -393,10 +393,41 @@
 	<opencv2/imgproc/imgproc.hpp>
 	"CV_helper/Guilded_helper.h"
 
-1483432524 /home/ysing/codeblock Projects/OpenCV/CV_helper/Guilded_helper.h
+1483611830 /home/ysing/codeblock Projects/OpenCV/CV_helper/Guilded_helper.h
 	<iostream>
 	<stdio.h>
 	<opencv2/core/core.hpp>
 	<opencv2/highgui/highgui.hpp>
 	<opencv2/imgproc/imgproc.hpp>
+
+1483517445 source:/home/ysing/codeblock Projects/OpenCV/Guilded_filter_RGB.cpp
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	"CV_helper/255Level_test.h"
+
+1483516790 /home/ysing/codeblock Projects/OpenCV/CV_helper/255Level_test.h
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+
+1483433574 source:/home/ysing/codeblock Projects/OpenCV/Guilded_Filter/Guilded_filter.cpp
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	"CV_helper/Guilded_helper.h"
+
+1483611622 source:/home/ysing/codeblock Projects/OpenCV/Guilded_Filter/Guilded_filter_RGB.cpp
+	<iostream>
+	<stdio.h>
+	<opencv2/core/core.hpp>
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	"CV_helper/Guilded_helper.h"
 
