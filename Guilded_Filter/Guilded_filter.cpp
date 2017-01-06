@@ -10,7 +10,7 @@ using namespace std;
 using namespace  cv;
 
 int main(){
-   Mat img1 = imread("/home/ysing/codeblock Projects/OpenCV/Guilded_Filter/dataset/img_smoothing/cat.bmp",0);
+   Mat img1 = imread("/home/ysing/codeblock Projects/OpenCV/Guilded_Filter/dataset/img_smoothing/beauty_with_freckle.bmp",0);
    Mat img(img1.rows,img1.cols,CV_64FC1);
    int rs = img.rows,cs = img.cols;
    for(int i =0;i<rs;++i){

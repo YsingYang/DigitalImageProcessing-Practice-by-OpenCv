@@ -78,6 +78,7 @@ Mat Guild_Filter(const Mat &source,const Mat &guilded,const int &radius,const fl
    Mat img(source.rows,source.cols,CV_64FC1);
    Mat guilded_img(guilded.rows,guilded.cols,CV_64FC1);
    int rs = img.rows,cs = img.cols;
+
    for(int i =0;i<rs;++i){
         for(int j=0;j<cs;++j){
             img.at<double>(i,j) = source.at<uchar>(i,j)/255.0;
@@ -85,8 +86,7 @@ Mat Guild_Filter(const Mat &source,const Mat &guilded,const int &radius,const fl
         }
     }
     //令像素级别区间至[0,1]
-    vector<vector<double>> tempa(rs,vector<double>(cs));//记录系数a
-    vector<vector<double>> tempb(rs,vector<double>(cs));//记录系数b;
+      Mat tempa(rs,cs,CV_64FC1),tempb(rs,cs,CV_64FC1);//记录系数a//记录系数b;
 
     for(int i=0;i<rs;++i){
         for(int j=0;j<cs;++j){
@@ -95,32 +95,113 @@ Mat Guild_Filter(const Mat &source,const Mat &guilded,const int &radius,const fl
             double mean_img = mean(img,i-radius,i+radius,j-radius,j+radius,radius);
             double var = variance(img,i-radius,i+radius,j-radius,j+radius,radius,mean_I);
             double core = corelation(img,guilded_img,i-radius,i+radius,j-radius,j+radius,radius);
-            tempa[i][j] = (core - mean_I*mean_img);
-            if(tempa[i][j]<0)
-                tempa[i][j] = 0;
-            tempa[i][j] /= (var+sigma);
-            double temp = tempa[i][j];
-       //     cout<<tempa[i][j]<<"   ";
-            tempb[i][j] = (mean_img)-tempa[i][j]*mean_I;
+            tempa.at<double>(i,j) = (core - mean_I*mean_img);
+            if( tempa.at<double>(i,j)<0)
+                 tempa.at<double>(i,j) = 0;
+             tempa.at<double>(i,j) /= (var+sigma);
+             tempb.at<double>(i,j) = (mean_img)- tempa.at<double>(i,j)*mean_I;
         }
         //cout<<endl;
     }
 
     for(int i=0;i<rs;++i){
         for(int j=0;j<cs;++j){
-            tempa[i][j] = mean(tempa,i-radius,i+radius,j-radius,j+radius,radius);
-            tempb[i][j] = mean(tempb,i-radius,i+radius,j-radius,j+radius,radius);
+            tempa.at<double>(i,j) = mean(tempa,i-radius,i+radius,j-radius,j+radius,radius);
+             tempb.at<double>(i,j) = mean(tempb,i-radius,i+radius,j-radius,j+radius,radius);
         }
     }
 
     Mat dst(rs,cs,CV_8UC1);
     for(int i=0;i<rs;++i){
         for(int j=0;j<cs;++j){
-            int temp = floor((img.at<double>(i,j) * tempa[i][j] + tempb[i][j])*255);
+            int temp = floor((img.at<double>(i,j) *  tempa.at<double>(i,j) +  tempb.at<double>(i,j))*255);
             dst.at<uchar>(i,j) = temp>255?255:temp;
         }
     }
     return dst;
-    //imshow("img",img);
-    //imshow("dst",dst);
 }
+
+    Mat faster_GF(const Mat &source,const Mat &guilded, int radius,const float &sigma,const float &scale_ratio){
+        int rs = source.rows,cs = source.cols;//resize前图片的大小
+        int scale_rs = rs*scale_ratio,scale_cs = cs*scale_ratio ;//resize后图片的行和列
+
+        //Mat scale_source(scale_rs,scale_cs,CV_8UC1),scale_guilded(scale_rs,scale_cs,CV_8UC1);
+        Mat scale_source,scale_guilded;
+       /* while(radius%scale_ratio!=0){
+            cout<<"Please input the radius you want(int)"<<endl;
+            cin>>scale_ratio;
+        }*/
+        radius *=scale_ratio;
+
+        cout<<scale_ratio<<endl;;
+        resize(source,scale_source,Size(),scale_ratio,scale_ratio,INTER_AREA);
+       // imshow("scale",scale_source);
+        resize(guilded,scale_guilded,Size(),scale_ratio,scale_ratio,INTER_AREA);
+        //imshow("g",scale_guilded);
+
+        //cout<<scale_source.rows<<"and "<<scale_source.cols<<endl;
+        Mat img(scale_rs,scale_cs,CV_64FC1);
+        Mat guilded_img(scale_rs,scale_cs,CV_64FC1);
+       // cout<<img.size()<<"   "<<scale_source.size()<<endl;
+
+
+        //暂存一个区间为[0,1]的Mat;
+       for(int i =0;i<scale_rs;++i){
+            for(int j=0;j<scale_cs;++j){
+                img.at<double>(i,j) = scale_source.at<uchar>(i,j)/255.0;
+                guilded_img.at<double>(i,j) = scale_guilded.at<uchar>(i,j)/255.0;
+                //cout<<img.at<double>(i,j)<<"   "<<guilded_img.at<double>(i,j)<<endl;;
+            }
+        }//令像素级别区间至[0,1]
+
+        Mat original_img(rs,cs,CV_64FC1);
+        for(int i=0;i<rs;++i){
+            for(int j=0;j<cs;++j){
+                original_img.at<double>(i,j) = source.at<uchar>(i,j)/255.0;
+            }
+        }
+
+        //vector<vector<double>> tempa(scale_rs,vector<double>(scale_cs));//记录系数a
+        //vector<vector<double>> tempb(scale_rs,vector<double>(scale_cs));//记录系数b;
+        Mat tempa(scale_rs,scale_cs,CV_64FC1),tempb(scale_rs,scale_cs,CV_64FC1);
+
+
+        for(int i=0;i<scale_rs;++i){
+        for(int j=0;j<scale_cs;++j){
+            double mean_I =  mean(guilded_img,i-radius,i+radius,j-radius,j+radius,radius);
+            //cout<<mean_I<<endl;
+            double mean_img = mean(img,i-radius,i+radius,j-radius,j+radius,radius);
+            double var = variance(guilded_img,i-radius,i+radius,j-radius,j+radius,radius,mean_I);
+            double core = corelation(img,guilded_img,i-radius,i+radius,j-radius,j+radius,radius);
+            tempa.at<double>(i,j) = (core - mean_I*mean_img);
+            if(tempa.at<double>(i,j)<0)
+                tempa.at<double>(i,j) = 0;
+            tempa.at<double>(i,j) /= (var+sigma);
+
+            tempb.at<double>(i,j) = (mean_img)-tempa.at<double>(i,j)*mean_I;
+        }
+        //cout<<endl;
+    }
+
+        for(int i=0;i<scale_rs;++i){
+            for(int j=0;j<scale_cs;++j){
+                tempa.at<double>(i,j) = mean(tempa,i-radius,i+radius,j-radius,j+radius,radius);
+                tempb.at<double>(i,j) = mean(tempb,i-radius,i+radius,j-radius,j+radius,radius);
+                //cout<<tempa[i][j]<<endl;
+            }
+        }
+
+      //  vector<vector<double>> a(rs,vector<double>(cs)),b(rs,vector<double> (cs));
+        Mat a(rs,cs,CV_64FC1),b(rs,cs,CV_64FC1);
+        resize(tempa,a,Size(),1/scale_ratio,1/scale_ratio,CV_INTER_LINEAR);
+        resize(tempb,b,Size(),1/scale_ratio,1/scale_ratio,CV_INTER_LINEAR);
+
+        Mat dst(rs,cs,CV_8UC1);
+        for(int i=0;i<rs;++i){
+            for(int j=0;j<cs;++j){
+               int temp = floor((original_img.at<double>(i,j) *a.at<double>(i,j) +b.at<double>(i,j))*255);
+                dst.at<uchar>(i,j) = temp>255?255:temp;
+            }
+        }
+        return dst;
+    }

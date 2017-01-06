@@ -122,7 +122,7 @@
 		<Unit filename="CV_helper/Histogram.h" />
 		<Unit filename="CV_helper/Noise_helper.h" />
 		<Unit filename="CV_helper/RGB_2_HSI.h" />
-		<Unit filename="Guilded_Filter/Guilded_filter_RGB.cpp" />
+		<Unit filename="Guilded_Filter/Fast_Guilded_filter.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
