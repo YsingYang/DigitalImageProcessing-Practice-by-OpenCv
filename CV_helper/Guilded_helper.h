@@ -8,51 +8,32 @@
 using namespace std;
 using namespace  cv;
 
+//以下为取均值的操作
 double mean(const Mat &img,const int rfirst,const int rlast,const int cfirst,const int clast,const int r){//仅针对灰度图
     double  intensity=0.0;
     for(int i=rfirst;i<=rlast;++i){
         for(int j=cfirst;j<=clast;++j){
                 int nowi = (i<0? 0:i>=img.rows?img.rows-1:i);
                 int nowj = (j<0? 0:j>=img.cols?img.cols-1:j);
-               // intensity += (i<0||j<0||i>=img.rows||j>=img.cols)?0:img.at<double>(i,j);
                intensity += img.at<double>(nowi,nowj);
         }
     }
     float sub = 2.0*r+1;
-  //  intensity /=49.0;
    intensity /= (sub * sub);
-    //cout<<intensity<<cout;//观察有没全为0;
     return intensity;
 }
 
-double mean(const vector<vector<double>> &input,const int rfirst,const int rlast,const int cfirst,const int clast,const int r){//仅针对灰度图
-    double  intensity=0.0;
-    for(int i=rfirst;i<=rlast;++i){
-        for(int j=cfirst;j<=clast;++j){
-                int nowi = i<0?0:i>=input.size()?input.size()-1:i;
-                int nowj = j<0?0:j>=input[0].size()?input[0].size()-1:j;
-                //intensity += (i<0||j<0||i>=input.size()||j>=input[0].size())?0: input[i][j];
-                intensity += input[nowi][nowj];
-        }
-    }
-    float sub = 2.0*r+1;
- //   intensity /=49.0;
-    intensity /= (sub * sub);
-    return intensity;
-}
-
+//以下为求方差的操作
 double variance(const Mat&img,const int rfirst,const int rlast,const int cfirst,const int clast,const int r,const double mean){
     double intensity = 0.0;
     for(int i=rfirst;i<=rlast;++i){
         for(int j=cfirst;j<=clast;++j){
                int nowi = (i<0? 0:i>=img.rows?img.rows-1:i);
                 int nowj = (j<0? 0:j>=img.cols?img.cols-1:j);
-               // intensity += (i<0||j<0||i>=img.rows||j>=img.cols)?pow(mean,2):(img.at<double>(i,j)-mean) * (img.at<double>(i,j)-mean);
                intensity += pow(img.at<double>(nowi,nowj)-mean,2);
         }
     }
     float sub = 2.0*r+1;
-   // intensity /=49.0;
     intensity /= (sub * sub);
     return intensity;
 }
@@ -63,12 +44,10 @@ double corelation(const Mat &img,const Mat &I,const int rfirst, const int rlast,
         for(int j=cfirst;j<=clast;++j){
                 int nowi = (i<0? 0:i>=img.rows?img.rows-1:i);
                 int nowj = (j<0? 0:j>=img.cols?img.cols-1:j);
-                //intensity += (i<0||j<0||i>=img.rows||j>=img.cols)?0:( img.at<double>(i,j)* I.at<double>(i,j));
                 intensity +=img.at<double>(nowi,nowj) * I.at<double>(nowi,nowj);
         }
     }
     float sub = 2.0*r+1;
- //  intensity /=49.0;
     intensity /= (sub * sub);
     return intensity;
 }
@@ -79,31 +58,34 @@ Mat Guild_Filter(const Mat &source,const Mat &guilded,const int &radius,const fl
    Mat guilded_img(guilded.rows,guilded.cols,CV_64FC1);
    int rs = img.rows,cs = img.cols;
 
+    //令像素级别区间至[0,1]
    for(int i =0;i<rs;++i){
         for(int j=0;j<cs;++j){
             img.at<double>(i,j) = source.at<uchar>(i,j)/255.0;
             guilded_img.at<double>(i,j) = guilded.at<uchar>(i,j)/255.0;
         }
     }
-    //令像素级别区间至[0,1]
-      Mat tempa(rs,cs,CV_64FC1),tempb(rs,cs,CV_64FC1);//记录系数a//记录系数b;
+
+      Mat tempa(rs,cs,CV_64FC1),tempb(rs,cs,CV_64FC1);//记录系数a//记录系数b的矩阵;
 
     for(int i=0;i<rs;++i){
         for(int j=0;j<cs;++j){
-            double mean_I =  mean(guilded_img,i-radius,i+radius,j-radius,j+radius,radius);
+            double mean_I =  mean(guilded_img,i-radius,i+radius,j-radius,j+radius,radius);//求guided_img的均值
             //cout<<mean_I<<endl;
-            double mean_img = mean(img,i-radius,i+radius,j-radius,j+radius,radius);
-            double var = variance(img,i-radius,i+radius,j-radius,j+radius,radius,mean_I);
-            double core = corelation(img,guilded_img,i-radius,i+radius,j-radius,j+radius,radius);
+            double mean_img = mean(img,i-radius,i+radius,j-radius,j+radius,radius);//求p_img的均值
+            double var = variance(img,i-radius,i+radius,j-radius,j+radius,radius,mean_I);//求方差
+            double core = corelation(img,guilded_img,i-radius,i+radius,j-radius,j+radius,radius);//求协方差
+
             tempa.at<double>(i,j) = (core - mean_I*mean_img);
             if( tempa.at<double>(i,j)<0)
                  tempa.at<double>(i,j) = 0;
              tempa.at<double>(i,j) /= (var+sigma);
-             tempb.at<double>(i,j) = (mean_img)- tempa.at<double>(i,j)*mean_I;
+             tempb.at<double>(i,j) = (mean_img)- tempa.at<double>(i,j)*mean_I;//计算a,与b并放入相应的矩阵中
         }
         //cout<<endl;
     }
 
+    //对a,b求均值
     for(int i=0;i<rs;++i){
         for(int j=0;j<cs;++j){
             tempa.at<double>(i,j) = mean(tempa,i-radius,i+radius,j-radius,j+radius,radius);
@@ -111,6 +93,7 @@ Mat Guild_Filter(const Mat &source,const Mat &guilded,const int &radius,const fl
         }
     }
 
+    //dst为滤波后图像,由于显示需要[0,255],在这从[0,1]转为[0,255]
     Mat dst(rs,cs,CV_8UC1);
     for(int i=0;i<rs;++i){
         for(int j=0;j<cs;++j){
@@ -125,23 +108,16 @@ Mat Guild_Filter(const Mat &source,const Mat &guilded,const int &radius,const fl
         int rs = source.rows,cs = source.cols;//resize前图片的大小
         int scale_rs = rs*scale_ratio,scale_cs = cs*scale_ratio ;//resize后图片的行和列
 
-        //Mat scale_source(scale_rs,scale_cs,CV_8UC1),scale_guilded(scale_rs,scale_cs,CV_8UC1);
         Mat scale_source,scale_guilded;
-       /* while(radius%scale_ratio!=0){
-            cout<<"Please input the radius you want(int)"<<endl;
-            cin>>scale_ratio;
-        }*/
-        radius *=scale_ratio;
 
-        cout<<scale_ratio<<endl;;
-        resize(source,scale_source,Size(),scale_ratio,scale_ratio,INTER_AREA);
-       // imshow("scale",scale_source);
+        radius *=scale_ratio;//这里没写太好,我觉得需要判断做比例后,半径是否为小数,如果是小数需重新输入
+
+        resize(source,scale_source,Size(),scale_ratio,scale_ratio,INTER_AREA);//对图像进行resize操作
         resize(guilded,scale_guilded,Size(),scale_ratio,scale_ratio,INTER_AREA);
-        //imshow("g",scale_guilded);
 
-        //cout<<scale_source.rows<<"and "<<scale_source.cols<<endl;
+
         Mat img(scale_rs,scale_cs,CV_64FC1);
-        Mat guilded_img(scale_rs,scale_cs,CV_64FC1);
+        Mat guilded_img(scale_rs,scale_cs,CV_64FC1);//新建2个矩阵存储像素区间为[0,1]的矩阵
        // cout<<img.size()<<"   "<<scale_source.size()<<endl;
 
 
@@ -161,11 +137,11 @@ Mat Guild_Filter(const Mat &source,const Mat &guilded,const int &radius,const fl
             }
         }
 
-        //vector<vector<double>> tempa(scale_rs,vector<double>(scale_cs));//记录系数a
-        //vector<vector<double>> tempb(scale_rs,vector<double>(scale_cs));//记录系数b;
+        //存储,a,b系数
         Mat tempa(scale_rs,scale_cs,CV_64FC1),tempb(scale_rs,scale_cs,CV_64FC1);
 
 
+        //求a,b滤波过程
         for(int i=0;i<scale_rs;++i){
         for(int j=0;j<scale_cs;++j){
             double mean_I =  mean(guilded_img,i-radius,i+radius,j-radius,j+radius,radius);
@@ -183,6 +159,7 @@ Mat Guild_Filter(const Mat &source,const Mat &guilded,const int &radius,const fl
         //cout<<endl;
     }
 
+        //对a,b求均值
         for(int i=0;i<scale_rs;++i){
             for(int j=0;j<scale_cs;++j){
                 tempa.at<double>(i,j) = mean(tempa,i-radius,i+radius,j-radius,j+radius,radius);
@@ -192,10 +169,12 @@ Mat Guild_Filter(const Mat &source,const Mat &guilded,const int &radius,const fl
         }
 
       //  vector<vector<double>> a(rs,vector<double>(cs)),b(rs,vector<double> (cs));
+      //将a,b,resize 为原图像的大小
         Mat a(rs,cs,CV_64FC1),b(rs,cs,CV_64FC1);
         resize(tempa,a,Size(),1/scale_ratio,1/scale_ratio,CV_INTER_LINEAR);
         resize(tempb,b,Size(),1/scale_ratio,1/scale_ratio,CV_INTER_LINEAR);
 
+        //得到a,b系数,求得滤波后图像dst
         Mat dst(rs,cs,CV_8UC1);
         for(int i=0;i<rs;++i){
             for(int j=0;j<cs;++j){
