@@ -439,3 +439,33 @@
 	<opencv2/imgproc/imgproc.hpp>
 	"CV_helper/Guilded_helper.h"
 
+1484051378 source:/home/ysing/codeblock Projects/OpenCV/CV_Intermediate/practice1/ChangeSize_by_imgsave.cpp
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<iostream>
+	<stdio.h>
+
+1484220973 source:/home/ysing/codeblock Projects/OpenCV/CV_Intermediate/practice2/Blending Tutorial.cpp
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<iostream>
+	<stdio.h>
+
+1484221531 source:/home/ysing/codeblock Projects/OpenCV/CV_Intermediate/practice3/filp_img.cpp
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<iostream>
+	<stdio.h>
+
+1484223142 source:/home/ysing/codeblock Projects/OpenCV/CV_Intermediate/practice4/Split_and_merge.cpp
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<iostream>
+	<stdio.h>
+
+1484223288 source:/home/ysing/codeblock Projects/OpenCV/CV_Intermediate/practice4/Split_and_merge_lib.cpp
+	<opencv2/highgui/highgui.hpp>
+	<opencv2/imgproc/imgproc.hpp>
+	<iostream>
+	<stdio.h>
+

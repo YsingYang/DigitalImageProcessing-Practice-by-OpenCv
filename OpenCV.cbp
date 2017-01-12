@@ -115,6 +115,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="CV_Intermediate/practice1/ChangeSize_by_imgsave.cpp" />
 		<Unit filename="CV_helper/255Level_test.h" />
 		<Unit filename="CV_helper/DFT_helper.h" />
 		<Unit filename="CV_helper/Filter.h" />
@@ -122,7 +123,6 @@
 		<Unit filename="CV_helper/Histogram.h" />
 		<Unit filename="CV_helper/Noise_helper.h" />
 		<Unit filename="CV_helper/RGB_2_HSI.h" />
-		<Unit filename="Guilded_Filter/Fast_Guilded_filter.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
