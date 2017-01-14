@@ -11,7 +11,7 @@ using namespace std;
 using namespace  cv;
 
 int main(){
-   Mat img  = imread("CV_RGB/82.png",CV_LOAD_IMAGE_COLOR);
+   Mat img  = imread("CV_RGB/63.png",CV_LOAD_IMAGE_COLOR);
 
     int rs = img.rows ,  cs = img.cols;
     Mat hsi;
@@ -33,14 +33,14 @@ int main(){
 
     imshow("hsi",hsi);
     hsi2bgr(img,hsi);//HSI TO BRG*/
-    imwrite("CV_RGB/Hsi.jpg",hsi);
+    imwrite("CV_RGB/63Hsi.jpg",img);
     //show_Hist(img,0,"equ_0",0);
     //show_Hist(img,1,"equ_1",0);
     //show_Hist(img,2,"equ_2",0);
     //显示直方图
     cout<<img<<endl;
     imshow("img",img);
-    imwrite("CV_RGB/HSI_equalized.jpg",img);
+    //imwrite("CV_RGB/HSI_equalized.jpg",img);
     waitKey(0);
     return 1;
 }

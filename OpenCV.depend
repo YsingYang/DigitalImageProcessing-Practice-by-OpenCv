@@ -469,3 +469,16 @@
 	<iostream>
 	<stdio.h>
 
+1484226457 source:/home/ysing/codeblock Projects/OpenCV/CV_Intermediate/practice5/track_bar.cpp
+	<cv.h>
+	<highgui.h>
+
+1484402746 source:/home/ysing/codeblock Projects/OpenCV/CV_Advanced/practice1/ AnalogWallClock.cpp
+	<iostream>
+	"opencv2/highgui/highgui.hpp"
+	"opencv2/imgproc/imgproc_c.h"
+	"opencv2/imgproc/imgproc.hpp"
+	<stdio.h>
+	<ctime>
+	<sys/timeb.h>
+
